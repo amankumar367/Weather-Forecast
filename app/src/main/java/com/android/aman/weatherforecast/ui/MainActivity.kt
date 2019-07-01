@@ -21,4 +21,8 @@ class MainActivity : AppCompatActivity() {
     private fun startFragment() {
         supportFragmentManager.beginTransaction().replace(R.id.mainActivity, fragmentCityNameFragment).commit()
     }
+
+    override fun onStart() {
+        super.onStart()
+    }
 }
