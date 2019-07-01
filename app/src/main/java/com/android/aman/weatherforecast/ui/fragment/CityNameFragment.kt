@@ -13,7 +13,6 @@ class CityNameFragment : Fragment() {
     private lateinit var root : View
     private val fragmentWeatherForecastFragment = WeatherForecastFragment()
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         root = inflater.inflate(R.layout.fragment_city_name, container, false)
         onClick()
@@ -27,8 +26,6 @@ class CityNameFragment : Fragment() {
     }
 
     private fun startFragment() {
-        fragmentManager!!.beginTransaction().replace(R.id.mainActivity, fragmentWeatherForecastFragment)
-            .addToBackStack(null)
-            .commit()
+        fragmentManager!!.beginTransaction().replace(R.id.mainActivity, fragmentWeatherForecastFragment).commit()
     }
 }

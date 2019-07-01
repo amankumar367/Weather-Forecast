@@ -2,4 +2,9 @@
     <string name="app_name">Weather Forecast</string>
     <string name="nullDiscription">null</string>
     <string name="tv_enter_city">Enter City</string>
+    <string name="cityName">Chandigarh</string>
+    <string name="main_temp">"37" ℃</string>
+    <string name="weather_discription">Scattered Thundershowers</string>
+    <string name="temp_day">Day</string>
+    <string name="temp_min_max">22/16</string>
 </resources>
