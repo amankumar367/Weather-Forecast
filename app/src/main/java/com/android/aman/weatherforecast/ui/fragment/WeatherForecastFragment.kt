@@ -32,6 +32,7 @@ class WeatherForecastFragment : Fragment() {
         }!!
         viewModel.setRepository(weatherForecastRepo)
         viewModel.getWeatherData()
+        viewModel.getWeatherForecastDat()
     }
 
     private fun setObserver() {

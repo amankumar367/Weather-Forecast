@@ -43,9 +43,9 @@
                 android:layout_marginStart="112dp"
                 android:layout_marginEnd="16dp" app:layout_constraintEnd_toStartOf="@+id/opneCityName"/>
         <ImageView
+                android:id="@+id/opneCityName"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp" app:srcCompat="@drawable/forward_button"
-                android:id="@+id/opneCityName"
                 android:contentDescription="@string/nullDiscription"
                 app:layout_constraintTop_toTopOf="@+id/tv_city_name"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_city_name"

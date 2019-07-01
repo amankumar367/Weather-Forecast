@@ -3,6 +3,7 @@ package com.android.aman.weatherforecast.ui
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.android.aman.weatherforecast.api.data.WeatherData
+import com.android.aman.weatherforecast.api.data.WeatherForecastData
 import com.android.aman.weatherforecast.api.repo.WeatherForecastRepoI
 import com.android.aman.weatherforecast.api.retrofit.ApiCallBack
 
@@ -26,8 +27,23 @@ class WeatherForecastViewModel : ViewModel() {
         })
     }
 
+    fun getWeatherForecastDat(){
+        weatherForecastRepoI.getWeatherForecast(object : ApiCallBack<WeatherForecastData>{
+            override fun onSuccess(t: WeatherForecastData) {
+                Log.e(TAG1, "onSuccess - $t")
+            }
+
+            override fun onFailure(message: String) {
+                Log.e(TAG1, "onFailure - $message")
+
+            }
+        })
+    }
+
     companion object{
-        const val TAG = "Weather Forecast"
+        const val TAG = "Weather"
+        const val TAG1 = "Weather Forecast"
+
     }
 
 }
