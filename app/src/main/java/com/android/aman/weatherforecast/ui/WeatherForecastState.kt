@@ -6,7 +6,11 @@ import com.android.aman.weatherforecast.api.data.WeatherForecastData
 data class WeatherForecastState(
     var isSuccess: Boolean = false,
     var isLoading: Boolean = false,
-    var cityName: String = "Chandigarh" ,
+    var cityName: String = "" ,
+    var temp: String = "",
+    var mintemp: String = "",
+    var maxtemp: String = "",
+    var discription: String = "",
     var message: String = "",
     var weatherData: WeatherData? = null,
     var weatherForecastData: WeatherForecastData? = null) {
@@ -21,6 +25,10 @@ data class WeatherForecastState(
                 isSuccess = true,
                 isLoading = false,
                 cityName = weatherData.name!!,
+                temp = weatherData.main!!.temp.toString(),
+                mintemp = weatherData.main!!.tempMin.toString(),
+                maxtemp = weatherData.main!!.tempMax.toString(),
+                discription = weatherData.weather!![0]!!.description!!,
                 message = "Loaded Successfully",
                 weatherData = weatherData
             )
