@@ -12,6 +12,8 @@ class WeatherForecastViewModel : ViewModel() {
 
     private lateinit var weatherForecastRepoI: WeatherForecastRepoI
 
+    var stateWeatherForecast = MutableLiveData<WeatherForecastData>()
+
     internal var state = MutableLiveData<WeatherForecastState>()
 
     fun setRepository(weatherForecastRepoI: WeatherForecastRepoI){
@@ -36,6 +38,7 @@ class WeatherForecastViewModel : ViewModel() {
     fun getWeatherForecastDat(){
         weatherForecastRepoI.getWeatherForecast(object : ApiCallBack<WeatherForecastData>{
             override fun onSuccess(t: WeatherForecastData) {
+                stateWeatherForecast.postValue(t)
                 Log.e(TAG1, "onSuccess - $t")
             }
 
@@ -49,7 +52,6 @@ class WeatherForecastViewModel : ViewModel() {
     companion object{
         const val TAG = "Weather"
         const val TAG1 = "Weather Forecast"
-
     }
 
 }

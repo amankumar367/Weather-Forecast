@@ -29,6 +29,7 @@ ext {
     final def vRxAndroid                = '2.1.0'
     final def vRxJava                   = '2.2.3'
     final def vStetho                   = '1.5.0'
+    final def vPicasso                  = '2.71828'
 
     /* Test Libraries */
     final def vJUnit                = '4.12'
@@ -81,6 +82,7 @@ ext {
     ]
 
     libs = [
+            picasso             : "com.squareup.picasso:picasso:$vPicasso",
             circleImageview     : "de.hdodenhof:circleimageview:$vCircleImageView",
             expandableLayout    : "net.cachapa.expandablelayout:expandablelayout:$vExpandableLayout",
             stetho              : "com.facebook.stetho:stetho:$vStetho",

@@ -35,7 +35,9 @@ class CityNameFragment : Fragment() {
         bundle.putString(WeatherForecastFragment.CITY_NAME, cityName)
 
         fragmentWeatherForecastFragment.arguments = bundle
-        fragmentManager!!.beginTransaction().replace(R.id.mainActivity, fragmentWeatherForecastFragment).commit()
+        fragmentManager!!.beginTransaction().replace(R.id.mainActivity, fragmentWeatherForecastFragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     private fun getCityName() : String? {
