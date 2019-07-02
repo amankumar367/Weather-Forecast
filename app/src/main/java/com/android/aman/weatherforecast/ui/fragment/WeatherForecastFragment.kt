@@ -2,6 +2,7 @@ package com.android.aman.weatherforecast.ui.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.android.aman.weatherforecast.R
 import com.android.aman.weatherforecast.Utils
 import com.android.aman.weatherforecast.api.data.WeatherData
@@ -25,6 +27,7 @@ class WeatherForecastFragment : Fragment() {
 
     private lateinit var dataBinding: FragmentWeatherForecastBinding
     private lateinit var root : View
+    private lateinit var swipRefreshLayout: SwipeRefreshLayout
     private lateinit var cityName : String
     private lateinit var viewModel : WeatherForecastViewModel
     private lateinit var weatherForecastRepo: WeatherForecastRepo
@@ -35,6 +38,7 @@ class WeatherForecastFragment : Fragment() {
         getCityName()
         init()
         setObserver()
+        setSwipRefresh()
         return root
     }
 
@@ -46,6 +50,13 @@ class WeatherForecastFragment : Fragment() {
         viewModel.setRepository(weatherForecastRepo)
         viewModel.getWeatherData()
         viewModel.getWeatherForecastDat()
+    }
+
+    private fun setSwipRefresh() {
+        swipRefreshLayout = root.swipe_refresh
+        swipRefreshLayout.setOnRefreshListener {
+            setObserver()
+        }
     }
 
     private fun setObserver() {
@@ -68,9 +79,19 @@ class WeatherForecastFragment : Fragment() {
             dataBinding.state!!.isSuccess -> {
                 setWeatherDetails(dataBinding.state!!.weatherData)
                 toast(dataBinding.state!!.message)
+
+                val handler = Handler()
+                handler.postDelayed({
+                    swipRefreshLayout.isRefreshing = false
+                }, 500)
             }
             else -> {
                 toast(dataBinding.state!!.message)
+
+                val handler = Handler()
+                handler.postDelayed({
+                    swipRefreshLayout.isRefreshing = false
+                }, 500)
             }
         }
     }
