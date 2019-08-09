@@ -17,7 +17,6 @@ class CityNameFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         root = inflater.inflate(R.layout.fragment_city_name, container, false)
-        getCityName()
         onClick()
         return root
     }
